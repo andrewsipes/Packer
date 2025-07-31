@@ -1,0 +1,35 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    # Stop ssh for packer to stop it thinking the VM is ready
+    - sudo systemctl stop ssh
+  locale: en_US
+  keyboard:
+    layout: us
+  identity:
+    hostname: ubuntu-server
+    username: ubuntu
+    password: "$6$1YuHY3VCHOzUT/z5$W6RbUPiyQrWrZSx38FIu1scUqpNBX6JKsXhEYIonJPwW.h3mYRz14gVtfk5v8bD.5we8OX4W/I6DeSQ2.rKn00"
+  ssh:
+    install-server: true
+    allow-pw: true
+  packages: 
+    - openssh-server
+    - open-vm-tools
+    - cloud-init
+  storage:
+    layout:
+      name: direct
+  network:
+    network:
+      version: 2
+      ethernets:
+        ens192:
+          dhcp4: true
+  user-data:
+    disable_root: false
+  late-commands:
+    - sudo systemctl start ssh
+    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
