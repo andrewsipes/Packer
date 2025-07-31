@@ -11,32 +11,42 @@
 //  BLOCK: variable
 //  Defines the input variables.
 
+packer {
+  required_version = ">= 1.12.0"
+  required_plugins {
+    vsphere = {
+      source  = "github.com/hashicorp/vsphere"
+      version = ">= 1.4.2"
+   }
+  }
+}
+
 // vSphere Credentials
 
 variable "vsphere_endpoint" {
   type        = string
   description = "The fully qualified domain name or IP address of the vCenter Server instance."
-  default     = 
+  default     = null
 }
 
 variable "vsphere_username" {
   type        = string
   description = "The username to login to the vCenter Server instance."
   sensitive   = true
-  default     = ""
+  default     = null
 }
 
 variable "vsphere_password" {
   type        = string
   description = "The password for the login to the vCenter Server instance."
   sensitive   = true
-  default     = ""
+  default     = null
 }
 
 variable "vsphere_insecure_connection" {
   type        = bool
   description = "Do not validate vCenter Server TLS certificate."
-  default = true
+  default     = true
 }
 
 // vSphere Settings
@@ -44,49 +54,49 @@ variable "vsphere_insecure_connection" {
 variable "vsphere_datacenter" {
   type        = string
   description = "The name of the target vSphere datacenter."
-  default     = "ABRS Amer Datacenter"
+  default     = null
 }
 
 variable "vsphere_cluster" {
   type        = string
   description = "The name of the target vSphere cluster."
-  default     = ""
+  default     = null
 }
 
 variable "vsphere_host" {
   type        = string
   description = "The name of the target ESXi host."
-  default     = ""
+  default     = null
 }
 
 variable "vsphere_datastore" {
   type        = string
   description = "The name of the target vSphere datastore."
-  default     = "Resource"
+  default     = null
 }
 
 variable "vsphere_network" {
   type        = string
   description = "The name of the target vSphere network segment."
-  default     = "VM_Switch_Network"
+  default     = null
 }
 
 variable "vsphere_folder" {
   type        = string
   description = "The name of the target vSphere folder."
-  default     = "asipes"
+  default     = null
 }
 
 variable "vsphere_resource_pool" {
   type        = string
   description = "The name of the target vSphere resource pool."
-  default     = ""
+  default     = null
 }
 
 variable "vsphere_set_host_for_datastore_uploads" {
   type        = bool
   description = "Set this to true if packer should use the host for uploading files to the datastore."
-  default     = false
+  default     = true
 }
 
 // Virtual Machine Settings
@@ -118,7 +128,7 @@ variable "vm_guest_os_family" {
 variable "vm_guest_os_name" {
   type        = string
   description = "Guest OS Name"
-  default     = "Ubuntu2204-Template"
+  default     = null
 }
 
 variable "vm_guest_os_version" {
@@ -130,12 +140,13 @@ variable "vm_guest_os_version" {
 variable "vm_guest_os_type" {
   type        = string
   description = "The guest operating system type, also know as guestid."
+  default     = null
 }
 
 variable "vm_guest_os_cloudinit" {
   type        = bool
   description = "Enable cloud-init for the guest operating system."
-  default     = false
+  default     = null
 }
 
 variable "vm_firmware" {
@@ -159,18 +170,19 @@ variable "vm_cdrom_count" {
 variable "vm_cd_label"{
   type        = string
   description = "label for cloud init"
-  default     = "cidata"
+  default     = null
 }
+
 variable "vm_userdata" {
   type        = string
   description = "The number of virtual CD-ROMs remaining after the build."
-  default     = "./user-data"
+  default     = null
 }
 
 variable "vm_metadata" {
   type        = string
   description = "The number of virtual CD-ROMs remaining after the build."
-  default     = "./meta-data"
+  default     = null
 }
 
 variable "vm_cpu_count" {
@@ -194,7 +206,7 @@ variable "vm_cpu_hot_add" {
 variable "vm_mem_size" {
   type        = number
   description = "The size for the virtual memory in MB."
-  default     =  4 * 1024
+  default     = 1024
 }
 
 variable "vm_mem_hot_add" {
@@ -206,7 +218,7 @@ variable "vm_mem_hot_add" {
 variable "vm_disk_size" {
   type        = number
   description = "The size for the virtual disk in MB."
-  default     = 100 * 1024
+  default     = 10000
 }
 
 variable "vm_disk_controller_type" {
@@ -230,6 +242,7 @@ variable "vm_network_card" {
 variable "common_vm_version" {
   type        = number
   description = "The vSphere virtual hardware version."
+  default     = 14
 }
 
 variable "common_tools_upgrade_policy" {
@@ -282,26 +295,6 @@ variable "common_content_library_skip_export" {
   default     = false
 }
 
-// OVF Export Settings
-
-variable "common_ovf_export_enabled" {
-  type        = bool
-  description = "Enable OVF artifact export."
-  default     = false
-}
-
-variable "common_ovf_export_overwrite" {
-  type        = bool
-  description = "Overwrite existing OVF artifact."
-  default     = true
-}
-
-validate "common_ovf_export_image_files" {
-  type        = bool
-  description = "Export image files in the OVF artifact."
-  default     = true
-}
-
 // Removable Media Settings
 
 variable "common_iso_content_library_enabled" {
@@ -313,27 +306,31 @@ variable "common_iso_content_library_enabled" {
 variable "common_iso_content_library" {
   type        = string
   description = "The name of the target vSphere content library for the guest operating system ISO."
+  default     = ""
 }
 
 variable "common_iso_datastore" {
   type        = string
   description = "The name of the target vSphere datastore for the guest operating system ISO."
+  default     = null
 }
 
 variable "iso_datastore_path" {
   type        = string
   description = "The path on the source vSphere datastore for the guest operating system ISO."
+  default     = null
 }
 
 variable "iso_file" {
   type        = string
   description = "The file name of the guest operating system ISO."
-  default     = "[Resource] ISO/ubuntu-22.04.5-live-server-amd64.iso"
+  default     = null
 }
 
 variable "iso_content_library_item" {
   type        = string
   description = "The vSphere content library item name for the guest operating system ISO."
+  default     = null
 }
 
 // Boot Settings
@@ -341,22 +338,7 @@ variable "iso_content_library_item" {
 variable "common_data_source" {
   type        = string
   description = "The provisioning data source. One of `http` or `disk`."
-}
-
-variable "common_http_ip" {
-  type        = string
-  description = "Define an IP address on the host to use for the HTTP server."
   default     = null
-}
-
-variable "common_http_port_min" {
-  type        = number
-  description = "The start of the HTTP port range."
-}
-
-variable "common_http_port_max" {
-  type        = number
-  description = "The end of the HTTP port range."
 }
 
 variable "vm_boot_order" {
@@ -374,6 +356,7 @@ variable "vm_boot_wait" {
 variable "common_ip_wait_timeout" {
   type        = string
   description = "Time to wait for guest operating system IP address response."
+  default     = null
 }
 
 variable "common_ip_settle_timeout" {
@@ -385,58 +368,10 @@ variable "common_ip_settle_timeout" {
 variable "common_shutdown_timeout" {
   type        = string
   description = "Time to wait for guest operating system shutdown."
+  default     = null
 }
 
 // Communicator Settings and Credentials
-
-variable "build_username" {
-  type        = string
-  description = "The username to login to the guest operating system."
-  sensitive   = true
-}
-
-variable "build_password" {
-  type        = string
-  description = "The password to login to the guest operating system."
-  sensitive   = true
-}
-
-variable "build_password_encrypted" {
-  type        = string
-  description = "The encrypted password to login the guest operating system."
-  sensitive   = true
-}
-
-variable "build_key" {
-  type        = string
-  description = "The public key to login to the guest operating system."
-  sensitive   = true
-}
-
-variable "communicator_proxy_host" {
-  type        = string
-  description = "The proxy server to use for SSH connection. (Optional)"
-  default     = null
-}
-
-variable "communicator_proxy_port" {
-  type        = number
-  description = "The port to connect to the proxy server. (Optional)"
-  default     = null
-}
-
-variable "communicator_proxy_username" {
-  type        = string
-  description = "The username to authenticate with the proxy server. (Optional)"
-  default     = null
-}
-
-variable "communicator_proxy_password" {
-  type        = string
-  description = "The password to authenticate with the proxy server. (Optional)"
-  sensitive   = true
-  default     = null
-}
 
 variable "communicator_port" {
   type        = number
@@ -448,33 +383,4 @@ variable "communicator_timeout" {
   type        = string
   description = "The timeout for the communicator protocol."
   default     = "30m"
-}
-
-// Ansible Credentials
-
-variable "ansible_username" {
-  type        = string
-  description = "The username for Ansible to login to the guest operating system."
-  sensitive   = true
-}
-
-variable "ansible_key" {
-  type        = string
-  description = "The public key for Ansible to login to the guest operating system."
-  sensitive   = true
-}
-
-// HCP Packer Settings
-
-variable "common_hcp_packer_registry_enabled" {
-  type        = bool
-  description = "Enable the HCP Packer registry."
-  default     = false
-}
-// Additional Settings
-
-variable "additional_packages" {
-  type        = list(string)
-  description = "Additional packages to install."
-  default     = []
 }

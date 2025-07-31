@@ -19,7 +19,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
 #vCenter
   vcenter_server = var.vsphere_endpoint
   username = var.vsphere_username
-  password = var.vsphere.password
+  password = var.vsphere_password
   datacenter = var.vsphere_datacenter
   datastore = var.vsphere_datastore
   host = var.vsphere_host
@@ -51,13 +51,13 @@ source "vsphere-iso" "linux-ubuntu-server" {
 #Network
   network_adapters {
     network = var.vsphere_network
-    network_card = var.vm_network_card
+    network_card = var.vm_netwok_card
   }
 
 #CD / ISO
   iso_paths = [var.iso_file]
   cd_files  = [var.vm_metadata, var.vm_userdata]
-  cd_label = "cidata"
+  cd_label = var.vm_cd_label
   remove_cdrom = var.common_remove_cdrom
   boot_order = "disk,cdrom"
 
