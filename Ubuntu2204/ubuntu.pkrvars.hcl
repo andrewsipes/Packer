@@ -10,15 +10,15 @@
 #
 
 #vSphere details
-vsphere_endpoint = 
-vsphere_username = 
-vsphere_password =  
+vsphere_endpoint = ""
+vsphere_username = ""
+vsphere_password =  ""
 vsphere_insecure_connection = true
-vsphere_datacenter = 
-vsphere_host = 
-vsphere_datastore = 
-vsphere_network = 
-vsphere_folder =
+vsphere_datacenter = ""
+vsphere_host = ""
+vsphere_datastore = ""
+vsphere_network = ""
+vsphere_folder = ""
 vsphere_set_host_for_datastore_uploads = false
 
 #VM Details

@@ -41,7 +41,6 @@ source "vsphere-iso" "linux-ubuntu-server" {
     disk_size = var.vm_disk_size
     disk_controller_index = 0
     disk_thin_provisioned = var.vm_disk_thin_provisioned
-    disk_eagerly_scrub = false
   }
 
 #Network
@@ -85,7 +84,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
   ssh_timeout = var.ssh_timeout
   ssh_handshake_attempts = var.ssh_handshake_attempts
   shutdown_command = "echo ${var.ssh_password} | sudo -S -E shutdown -P now"
-  shutdown_timeout = var.ssh_shutdown_timeout
+  shutdown_timeout = var.shutdown_timeout
 }
 
 
@@ -93,9 +92,8 @@ source "vsphere-iso" "linux-ubuntu-server" {
 build {
   sources = [
     "source.vsphere-iso.linux-ubuntu-server"]
-  #provisioner "shell" {
-    #execute_command = "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
-    #scripts = ["./script.sh"]
-    #expect_disconnect = true
-  #}
+  provisioner "shell" {
+    scripts = ["./Ubuntu2204/script.sh"]
+    expect_disconnect = true
+  }
  }

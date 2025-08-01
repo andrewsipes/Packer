@@ -236,7 +236,7 @@ variable "common_template_conversion" {
   default     = false
 }
 
-variable "communicator_port" {
+variable "ssh_port" {
   type        = number
   description = "The port for the communicator protocol."
   default     = 22
@@ -285,7 +285,7 @@ variable "ssh_handshake_attempts"{
 }
 
 variable "shutdown_timeout"{
-  type        = number
+  type        = string
   description = "shutdown timeout"
   default     = "15m"
 }
