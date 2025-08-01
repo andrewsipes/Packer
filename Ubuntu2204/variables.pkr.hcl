@@ -11,22 +11,22 @@
 //  BLOCK: variable
 //  Defines the input variables.
 
+// vSphere Credentials
+
+#Uncommment to install plugin
 packer {
   required_version = ">= 1.12.0"
   required_plugins {
     vsphere = {
       source  = "github.com/hashicorp/vsphere"
       version = ">= 1.4.2"
-   }
+    }
   }
 }
-
-// vSphere Credentials
 
 variable "vsphere_endpoint" {
   type        = string
   description = "The fully qualified domain name or IP address of the vCenter Server instance."
-  default     = null
 }
 
 variable "vsphere_username" {
@@ -134,7 +134,7 @@ variable "vm_guest_os_name" {
 variable "vm_guest_os_version" {
   type        = string
   description = "The guest operating system version. Used for naming."
-  default     = 14
+  default     = null
 }
 
 variable "vm_guest_os_type" {

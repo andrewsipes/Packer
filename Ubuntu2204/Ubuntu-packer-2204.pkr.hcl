@@ -29,8 +29,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
 
 #VM details
   convert_to_template = true
-  guest_os_type = var.vm_guest_os_ty
-  vm_version = var.guest_os_version
+  guest_os_type = var.vm_guest_os_type
   vm_name = var.vm_guest_os_name
   firmware = var.vm_firmware
   CPUs = var.vm_cpu_count
@@ -51,7 +50,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
 #Network
   network_adapters {
     network = var.vsphere_network
-    network_card = var.vm_netwok_card
+    network_card = var.vm_network_card
   }
 
 #CD / ISO
@@ -98,9 +97,9 @@ source "vsphere-iso" "linux-ubuntu-server" {
 build {
   sources = [
     "source.vsphere-iso.linux-ubuntu-server"]
-  provisioner "shell" {
-    execute_command = "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+  #provisioner "shell" {
+    #execute_command = "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
     #scripts = ["./script.sh"]
-    expect_disconnect = true
-  }
+    #expect_disconnect = true
+  #}
  }
