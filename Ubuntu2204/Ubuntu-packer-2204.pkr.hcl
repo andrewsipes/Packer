@@ -1,19 +1,18 @@
-#Uncommment to install plugin
-#packer {
-#  required_version = ">= 1.12.0"
-#  required_plugins {
-#    vsphere = {
-#      source  = "github.com/hashicorp/vsphere"
-#      version = ">= 1.4.2"
-#    }
-#  }
-#}
+#######################################
+# DESCRIPTION:  Ubuntu Packer Image
+# PURPOSE:      Deploys Packer Image
+# AUTHOR:       Andrew Sipes
+#
+# CREATED:      8/1/2025
+# HISTORY:      
+#
+# 8/1/2025      - 1st Successful Deployment
+#
 
 # LOCALS
 
 
 # SOURCE
-
 source "vsphere-iso" "linux-ubuntu-server" {
 
 #vCenter
@@ -28,15 +27,13 @@ source "vsphere-iso" "linux-ubuntu-server" {
   tools_upgrade_policy = var.common_tools_upgrade_policy
 
 #VM details
-  convert_to_template = true
+  convert_to_template = var.common_template_conversion
   guest_os_type = var.vm_guest_os_type
   vm_name = var.vm_guest_os_name
   firmware = var.vm_firmware
   CPUs = var.vm_cpu_count
   cpu_cores = var.vm_cpu_cores
-  CPU_hot_plug = false
   RAM = var.vm_mem_size
-  RAM_hot_plug = var.vm_mem_hot_add
 
 #Storage
   disk_controller_type = var.vm_disk_controller_type
@@ -58,7 +55,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
   cd_files  = [var.vm_metadata, var.vm_userdata]
   cd_label = var.vm_cd_label
   remove_cdrom = var.common_remove_cdrom
-  boot_order = "disk,cdrom"
+  boot_order = var.vm_boot_order
 
 #Boot Command - Pulled from Broadcom
   boot_command = [
@@ -87,7 +84,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
   ssh_port = 22
   ssh_timeout = "1h"
   ssh_handshake_attempts = "100"
-  #shutdown_command = "echo 'ubuntu' | sudo -S -E shutdown -P now"
+  shutdown_command = "echo 'ubuntu' | sudo -S -E shutdown -P now"
   shutdown_timeout = "15m"
 }
 
