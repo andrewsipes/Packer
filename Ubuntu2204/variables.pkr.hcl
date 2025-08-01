@@ -188,14 +188,6 @@ variable "common_remove_cdrom" {
   default     = true
 }
 
-// Template and Content Library Settings
-
-variable "common_template_conversion" {
-  type        = bool
-  description = "Convert the virtual machine to template. Must be 'false' for content library."
-  default     = false
-}
-
 variable "iso_file" {
   type        = string
   description = "The file name of the guest operating system ISO."
@@ -212,6 +204,36 @@ variable "vm_boot_order" {
   type        = string
   description = "The boot order for virtual machines devices."
   default     = "disk,cdrom"
+}
+
+variable "vm_guest_os_name" {
+  type        = string
+  description = "Guest OS Name"
+  default     = null
+}
+
+variable "vm_guest_os_version" {
+  type        = string
+  description = "The guest operating system version. Used for naming."
+  default     = null
+}
+
+variable "vm_guest_os_type" {
+  type        = string
+  description = "The guest operating system type, also know as guestid."
+  default     = null
+}
+
+variable "vm_guest_os_cloudinit" {
+  type        = bool
+  description = "Enable cloud-init for the guest operating system."
+  default     = null
+}
+
+variable "common_template_conversion" {
+  type        = bool
+  description = "Convert the virtual machine to template. Must be 'false' for content library."
+  default     = false
 }
 
 variable "communicator_port" {

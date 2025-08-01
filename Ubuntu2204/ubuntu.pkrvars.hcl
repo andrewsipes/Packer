@@ -10,15 +10,15 @@
 #
 
 #vSphere details
-vsphere_endpoint = ""
-vsphere_username = ""
-vsphere_password =  ""
+vsphere_endpoint = "abrsamervcenter.corp.microsoft.com"
+vsphere_username = "asipes@vsphere.local"
+vsphere_password =  "Notadefaultpass!7"
 vsphere_insecure_connection = true
-vsphere_datacenter = ""
-vsphere_host = ""
-vsphere_datastore = ""
-vsphere_network = ""
-vsphere_folder = ""
+vsphere_datacenter = "ABRS Amer Datacenter"
+vsphere_host = "10.197.209.132"
+vsphere_datastore = "Resource"
+vsphere_network = "VM_Switch_Network"
+vsphere_folder = "asipes"
 vsphere_set_host_for_datastore_uploads = false
 
 #VM Details
