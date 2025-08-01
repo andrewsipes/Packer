@@ -242,7 +242,7 @@ variable "communicator_port" {
   default     = 22
 }
 
-variable "communicator_timeout" {
+variable "ssh_timeout" {
   type        = string
   description = "The timeout for the communicator protocol."
   default     = "30m"
@@ -258,4 +258,34 @@ variable "convert_to_template" {
   type        = bool
   description = "Whether to convert the VM to a template after provisioning."
   default     = true
+}
+
+variable "ip_wait_timeout"{
+  type        = string
+  description = "timeout for waiting for ip"
+  default     = "30m"
+}
+
+variable "ssh_username"{
+  type        = string
+  description = "ssh user"
+  default     = "ubuntu"
+}
+
+variable "ssh_password"{
+  type        = string
+  description = "ssh password"
+  default     = "ubuntu"
+}
+
+variable "ssh_handshake_attempts"{
+  type        = number
+  description = "max handshake attempts"
+  default     = 100
+}
+
+variable "shutdown_timeout"{
+  type        = number
+  description = "shutdown timeout"
+  default     = "15m"
 }

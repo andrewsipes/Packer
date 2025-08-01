@@ -78,19 +78,17 @@ source "vsphere-iso" "linux-ubuntu-server" {
   ]
 
 #SSH
-  ip_wait_timeout = "20m"
-  ssh_password = "ubuntu"
-  ssh_username = "ubuntu"
-  ssh_port = 22
-  ssh_timeout = "1h"
-  ssh_handshake_attempts = "100"
-  shutdown_command = "echo 'ubuntu' | sudo -S -E shutdown -P now"
-  shutdown_timeout = "15m"
+  ip_wait_timeout = var.ip_wait_timeout
+  ssh_password = var.ssh_password
+  ssh_username = var.ssh_username
+  ssh_port = var.ssh_port
+  ssh_timeout = var.ssh_timeout
+  ssh_handshake_attempts = var.ssh_handshake_attempts
+  shutdown_command = "echo ${var.ssh_password} | sudo -S -E shutdown -P now"
+  shutdown_timeout = var.ssh_shutdown_timeout
 }
 
-
 # BUILD
-
 build {
   sources = [
     "source.vsphere-iso.linux-ubuntu-server"]
