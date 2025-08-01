@@ -88,6 +88,7 @@ source "vsphere-iso" "linux-ubuntu-server" {
   shutdown_timeout = var.ssh_shutdown_timeout
 }
 
+
 # BUILD
 build {
   sources = [

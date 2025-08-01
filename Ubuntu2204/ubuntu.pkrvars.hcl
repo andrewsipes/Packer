@@ -10,15 +10,15 @@
 #
 
 #vSphere details
-vsphere_endpoint = "abrsamervcenter.corp.microsoft.com"
-vsphere_username = "asipes@vsphere.local"
-vsphere_password =  "Notadefaultpass!7"
+vsphere_endpoint = 
+vsphere_username = 
+vsphere_password =  
 vsphere_insecure_connection = true
-vsphere_datacenter = "ABRS Amer Datacenter"
-vsphere_host = "10.197.209.132"
-vsphere_datastore = "Datastore 1"
-vsphere_network = "VM_Switch_Network"
-vsphere_folder = "asipes"
+vsphere_datacenter = 
+vsphere_host = 
+vsphere_datastore = 
+vsphere_network = 
+vsphere_folder =
 vsphere_set_host_for_datastore_uploads = false
 
 #VM Details
@@ -46,3 +46,11 @@ iso_file = "[Resource] ISO/ubuntu-22.04.5-live-server-amd64.iso" #update to iso 
 vm_boot_order = "disk,cdrom"
 vm_boot_wait = "5s"
 additional_packages = []
+
+ip_wait_timeout = "20m"
+ssh_username = "ubuntu"
+ssh_password = "ubuntu"
+ssh_port = 22
+ssh_timeout = "30m"
+ssh_handshake_attempts = 100
+shutdown_timeout = "15m"
