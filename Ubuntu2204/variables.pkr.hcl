@@ -1,17 +1,14 @@
-# © Broadcom. All Rights Reserved.
-# The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.
-# SPDX-License-Identifier: BSD-2-Clause
 
-/*
-    DESCRIPTION:
-    Ubuntu Server 22.04 LTS build variables.
-    Packer Plugin for VMware vSphere: 'vsphere-iso' builder.
-*/
-
-//  BLOCK: variable
-//  Defines the input variables.
-
-// vSphere Credentials
+#######################################
+# DESCRIPTION:  VMware Vars File
+# PURPOSE:      Initializes Values for VMware Images
+# AUTHOR:       Andrew Sipes
+#
+# CREATED:      8/1/2025
+# HISTORY:      
+#
+# 8/1/2025      - 1st Successful Deployment
+#
 
 #Uncommment to install plugin
 packer {
@@ -101,54 +98,6 @@ variable "vsphere_set_host_for_datastore_uploads" {
 
 // Virtual Machine Settings
 
-variable "vm_guest_os_language" {
-  type        = string
-  description = "The guest operating system lanugage."
-  default     = "en_US"
-}
-
-variable "vm_guest_os_keyboard" {
-  type        = string
-  description = "The guest operating system keyboard input."
-  default     = "us"
-}
-
-variable "vm_guest_os_timezone" {
-  type        = string
-  description = "The guest operating system timezone."
-  default     = "UTC"
-}
-
-variable "vm_guest_os_family" {
-  type        = string
-  description = "The guest operating system family. Used for naming."
-  default     = "linux"
-}
-
-variable "vm_guest_os_name" {
-  type        = string
-  description = "Guest OS Name"
-  default     = null
-}
-
-variable "vm_guest_os_version" {
-  type        = string
-  description = "The guest operating system version. Used for naming."
-  default     = null
-}
-
-variable "vm_guest_os_type" {
-  type        = string
-  description = "The guest operating system type, also know as guestid."
-  default     = null
-}
-
-variable "vm_guest_os_cloudinit" {
-  type        = bool
-  description = "Enable cloud-init for the guest operating system."
-  default     = null
-}
-
 variable "vm_firmware" {
   type        = string
   description = "The virtual machine firmware."
@@ -197,22 +146,10 @@ variable "vm_cpu_cores" {
   default     = 4
 }
 
-variable "vm_cpu_hot_add" {
-  type        = bool
-  description = "Enable hot add CPU."
-  default     = false
-}
-
 variable "vm_mem_size" {
   type        = number
   description = "The size for the virtual memory in MB."
   default     = 1024
-}
-
-variable "vm_mem_hot_add" {
-  type        = bool
-  description = "Enable hot add memory."
-  default     = false
 }
 
 variable "vm_disk_size" {
@@ -239,12 +176,6 @@ variable "vm_network_card" {
   default     = "vmxnet3"
 }
 
-variable "common_vm_version" {
-  type        = number
-  description = "The vSphere virtual hardware version."
-  default     = 14
-}
-
 variable "common_tools_upgrade_policy" {
   type        = bool
   description = "Upgrade VMware Tools on reboot."
@@ -265,62 +196,6 @@ variable "common_template_conversion" {
   default     = false
 }
 
-variable "common_content_library_enabled" {
-  type        = bool
-  description = "Import the virtual machine into the vSphere content library."
-  default     = true
-}
-
-variable "common_content_library" {
-  type        = string
-  description = "The name of the target vSphere content library, if enabled."
-  default     = null
-}
-
-variable "common_content_library_ovf" {
-  type        = bool
-  description = "Export to content library as an OVF template."
-  default     = true
-}
-
-variable "common_content_library_destroy" {
-  type        = bool
-  description = "Delete the virtual machine after exporting to the content library."
-  default     = true
-}
-
-variable "common_content_library_skip_export" {
-  type        = bool
-  description = "Skip exporting the virtual machine to the content library. Option allows for testing/debugging without saving the machine image."
-  default     = false
-}
-
-// Removable Media Settings
-
-variable "common_iso_content_library_enabled" {
-  type        = bool
-  description = "Import the guest operating system ISO into the vSphere content library."
-  default     = false
-}
-
-variable "common_iso_content_library" {
-  type        = string
-  description = "The name of the target vSphere content library for the guest operating system ISO."
-  default     = ""
-}
-
-variable "common_iso_datastore" {
-  type        = string
-  description = "The name of the target vSphere datastore for the guest operating system ISO."
-  default     = null
-}
-
-variable "iso_datastore_path" {
-  type        = string
-  description = "The path on the source vSphere datastore for the guest operating system ISO."
-  default     = null
-}
-
 variable "iso_file" {
   type        = string
   description = "The file name of the guest operating system ISO."
@@ -333,45 +208,11 @@ variable "iso_content_library_item" {
   default     = null
 }
 
-// Boot Settings
-
-variable "common_data_source" {
-  type        = string
-  description = "The provisioning data source. One of `http` or `disk`."
-  default     = null
-}
-
 variable "vm_boot_order" {
   type        = string
   description = "The boot order for virtual machines devices."
   default     = "disk,cdrom"
 }
-
-variable "vm_boot_wait" {
-  type        = string
-  description = "The time to wait before boot."
-  default     = "5s"
-}
-
-variable "common_ip_wait_timeout" {
-  type        = string
-  description = "Time to wait for guest operating system IP address response."
-  default     = null
-}
-
-variable "common_ip_settle_timeout" {
-  type        = string
-  description = "Time to wait for guest operating system IP to settle down."
-  default     = "5s"
-}
-
-variable "common_shutdown_timeout" {
-  type        = string
-  description = "Time to wait for guest operating system shutdown."
-  default     = null
-}
-
-// Communicator Settings and Credentials
 
 variable "communicator_port" {
   type        = number
