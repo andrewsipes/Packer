@@ -225,3 +225,15 @@ variable "communicator_timeout" {
   description = "The timeout for the communicator protocol."
   default     = "30m"
 }
+
+variable "vm_notes" {
+  type        = string
+  description = "The notes for the VM."
+  default     = "Created by Packer."
+}
+
+variable "convert_to_template" {
+  type        = bool
+  description = "Whether to convert the VM to a template after provisioning."
+  default     = true
+}
