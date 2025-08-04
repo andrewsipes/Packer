@@ -1,6 +1,6 @@
 #######################################
 # DESCRIPTION:  Ubuntu Packer Image
-# PURPOSE:      Deploys Packer Image
+# PURPOSE:      Deploys Ubuntu Packer Image
 # AUTHOR:       Andrew Sipes
 #
 # CREATED:      8/1/2025
