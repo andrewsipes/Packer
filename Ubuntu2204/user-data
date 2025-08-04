@@ -30,6 +30,8 @@ autoinstall:
   user-data:
     disable_root: false
   late-commands:
-    - sudo systemctl start ssh
     - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
     - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
+    - curtin in-target --target=/target -- sudo ufw enable
+    - curtin in-target --target=/target -- sudo ufw allow ssh
+    - sudo systemctl start ssh

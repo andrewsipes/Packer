@@ -10,11 +10,15 @@
 #
 
 # LOCALS
+locals{
+  build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
 
+}
 
 # SOURCE
 source "vsphere-iso" "linux-ubuntu-server" {
 
+notes = "Built with Packer on ${build_date}"
 #vCenter
   vcenter_server = var.vsphere_endpoint
   username = var.vsphere_username
