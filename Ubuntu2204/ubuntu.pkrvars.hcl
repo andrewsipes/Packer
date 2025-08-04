@@ -7,7 +7,7 @@
 # HISTORY:      
 #
 # 8/1/2025      - 1st Successful Deployment
-#
+# 8/4/2025      - Working ufw / ssh configurations
 
 #vSphere details
 vsphere_endpoint = "abrsamervcenter.corp.microsoft.com"

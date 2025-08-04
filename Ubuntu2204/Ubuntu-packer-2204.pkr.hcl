@@ -7,18 +7,18 @@
 # HISTORY:      
 #
 # 8/1/2025      - 1st Successful Deployment
-#
+# 8/4/2025      - Working ufw / ssh configurations
 
 # LOCALS
 locals{
   build_date        = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-
 }
 
 # SOURCE
 source "vsphere-iso" "linux-ubuntu-server" {
 
-notes = "Built with Packer on ${build_date}"
+notes = "Built with Packer on ${local.build_date}"
+
 #vCenter
   vcenter_server = var.vsphere_endpoint
   username = var.vsphere_username
