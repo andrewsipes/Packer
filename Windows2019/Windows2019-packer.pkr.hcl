@@ -1,13 +1,12 @@
 #######################################
-# DESCRIPTION:  Ubuntu Packer Image
-# PURPOSE:      Deploys Ubuntu Packer Image
+# DESCRIPTION:  Windows 2019 Packer Image
+# PURPOSE:      Deploys Windows 2019 Packer Image
 # AUTHOR:       Andrew Sipes
 #
-# CREATED:      8/1/2025
+# CREATED:      8/4/2025
 # HISTORY:      
 #
-# 8/1/2025      - 1st Successful Deployment
-# 8/4/2025      - Working ufw / ssh configurations
+
 
 # LOCALS
 locals{
@@ -55,8 +54,8 @@ notes = "Built with Packer on ${local.build_date}"
 
 #CD / ISO
   iso_paths = [var.iso_file]
-  cd_files  = [var.vm_metadata, var.vm_userdata]
-  cd_label = var.vm_cd_label
+  #cd_files  = [var.vm_metadata, var.vm_userdata]
+  #cd_label = var.vm_cd_label
   remove_cdrom = var.common_remove_cdrom
   boot_order = var.vm_boot_order
 
@@ -82,22 +81,15 @@ notes = "Built with Packer on ${local.build_date}"
 
 #SSH
   ip_wait_timeout = var.ip_wait_timeout
-  ssh_password = var.ssh_password
-  ssh_username = var.ssh_username
-  ssh_port = var.ssh_port
-  ssh_timeout = var.ssh_timeout
-  ssh_handshake_attempts = var.ssh_handshake_attempts
-  shutdown_command = "echo ${var.ssh_password} | sudo -S -E shutdown -P now"
   shutdown_timeout = var.shutdown_timeout
 }
-
 
 # BUILD
 build {
   sources = [
-    "source.vsphere-iso.linux-ubuntu-server"]
-  provisioner "shell" {
-    scripts = ["./Ubuntu2204/script.sh"]
-    expect_disconnect = true
-  }
- }
+    ""]
+#  provisioner "shell" {
+#    scripts = [""]
+#    expect_disconnect = true
+#  }
+}
