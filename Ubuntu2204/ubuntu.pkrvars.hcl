@@ -22,6 +22,7 @@ vsphere_folder = ""
 vsphere_set_host_for_datastore_uploads = false
 
 #VM Details
+convert_to_conversion = false
 vm_guest_os_family = "linux"
 vm_guest_os_type ="ubuntu64Guest"
 vm_guest_os_name = "Ubuntu2204-Template"

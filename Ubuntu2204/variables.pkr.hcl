@@ -233,7 +233,7 @@ variable "vm_guest_os_cloudinit" {
 variable "common_template_conversion" {
   type        = bool
   description = "Convert the virtual machine to template. Must be 'false' for content library."
-  default     = false
+  default     = true
 }
 
 variable "ssh_port" {
