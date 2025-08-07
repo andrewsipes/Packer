@@ -7,16 +7,16 @@ sudo apt update
 sudo tee ~/generalize.sh > /dev/null << 'EOF'
 #!/bin/bash
 
-COUNTER="/home/ubuntu/counter.txt"
-REBOOTS=1
+# COUNTER="/home/ubuntu/counter.txt"
+# REBOOTS=0
 
 # Create counter file if not exists
-if [ ! -e "$COUNTER" ]; then
-    echo 0 > /home/ubuntu/counter.txt
-fi
+# if [ ! -e "$COUNTER" ]; then
+#     echo 0 > /home/ubuntu/counter.txt
+# fi
 
 # Set Count variable
-count=$(cat "$COUNTER")
+# count=$(cat "$COUNTER")
 
 # Generalize
 sudo rm -f /etc/machine-id
@@ -28,14 +28,14 @@ sudo systemctl restart sshd
 sudo echo "Generalized on $(date)" | sudo tee -a /var/log/generalize_log.txt > /dev/null
 
 # If count is less than target, increment and exit
-if [ "$count" -lt "$REBOOTS" ]; then
-    count=$((count + 1))
-    echo "$count" > "$COUNTER"
-    exit 0
-fi
+# if [ "$count" -lt "$REBOOTS" ]; then
+#     count=$((count + 1))
+#     echo "$count" > "$COUNTER"
+#     exit 0
+# fi
 
 # remove cron job
-sudo sed -i '\@reboot root /home/ubuntu/generalize.sh|d' /etc/crontab
+sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
 
 sudo rm -f /home/ubuntu/generalize.sh
 sudo rm -f /home/ubuntu/counter.txt
