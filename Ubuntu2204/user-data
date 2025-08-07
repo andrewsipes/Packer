@@ -34,4 +34,5 @@ autoinstall:
     - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
     - curtin in-target --target=/target -- sudo ufw enable
     - curtin in-target --target=/target -- sudo ufw allow ssh
+    - curtin in-target --target=/target -- sudo echo "@reboot root /home/ubuntu/generalize.sh" >> /etc/crontab
     - sudo systemctl start ssh
