@@ -3,12 +3,7 @@
 # PURPOSE:      Provides values to required attributes to deploy packer image
 # AUTHOR:       Andrew Sipes
 #
-# CREATED:      8/1/2025
-# HISTORY:      
-#
-# 8/1/2025      - 1st Successful Deployment
-# 8/4/2025      - Working ufw / ssh configurations
-# 8/7/2025      - Working Generalization Script
+# CREATED:      8/7/2025
 
 #vSphere details
 vsphere_endpoint = ""
