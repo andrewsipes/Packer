@@ -81,7 +81,7 @@ notes = "Built with Packer on ${local.build_date}"
 
 #SSH
   ip_wait_timeout = var.ip_wait_timeout
-  ip_settle_timeout = "5m"
+  ip_settle_timeout = var.ip_settle_timeout
   pause_before_connecting = "30s"
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username

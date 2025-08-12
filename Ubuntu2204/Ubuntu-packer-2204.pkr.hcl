@@ -8,6 +8,7 @@
 #
 # 8/1/2025      - 1st Successful Deployment
 # 8/4/2025      - Working ufw / ssh configurations
+# 8/7/2025      - Working Generalization Script
 
 # LOCALS
 locals{
@@ -82,6 +83,7 @@ notes = "Built with Packer on ${local.build_date}"
 
 #SSH
   ip_wait_timeout = var.ip_wait_timeout
+  ip_settle_timeout = var.ip_settle_timeout
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
   ssh_port = var.ssh_port

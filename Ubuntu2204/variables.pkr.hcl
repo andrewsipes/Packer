@@ -266,6 +266,12 @@ variable "ip_wait_timeout"{
   default     = "30m"
 }
 
+variable "ip_settle_timeout"{
+  type        = string
+  description = "timeout for waiting for ip"
+  default     = "5m"
+}
+
 variable "ssh_username"{
   type        = string
   description = "ssh user"

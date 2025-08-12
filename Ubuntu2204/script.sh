@@ -40,6 +40,10 @@ sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
 sudo rm -f /home/ubuntu/generalize.sh
 sudo rm -f /home/ubuntu/counter.txt
 
+sudo dhclient -r
+sudo dhclient
+
+
 EOF
 
 # change execution parameters

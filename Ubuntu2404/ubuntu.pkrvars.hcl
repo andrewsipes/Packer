@@ -4,8 +4,9 @@
 # AUTHOR:       Andrew Sipes
 #
 # CREATED:      8/7/2025
-# HISTORY:
-#               8/12/2025
+# HISTORY:      
+#
+# 8/12/2025      - 1st Successful Deployment
 
 #vSphere details
 vsphere_endpoint = ""
