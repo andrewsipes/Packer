@@ -18,6 +18,7 @@ autoinstall:
     - openssh-server
     - open-vm-tools
     - cloud-init
+    - isc-dhcp-client
   storage:
     layout:
       name: direct

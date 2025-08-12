@@ -1,5 +1,5 @@
 #######################################
-# DESCRIPTION:  Ubuntu PKvars File
+# DESCRIPTION:  Ubuntu pkrvars File
 # PURPOSE:      Provides values to required attributes to deploy packer image
 # AUTHOR:       Andrew Sipes
 #
