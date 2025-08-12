@@ -4,6 +4,9 @@
 # AUTHOR:       Andrew Sipes
 #
 # CREATED:      8/7/2025
+# HISTORY:      
+#
+# 8/12/2025      - 1st Successful Deployment
 
 # LOCALS
 locals{
@@ -11,7 +14,7 @@ locals{
 }
 
 # SOURCE
-source "vsphere-iso" "linux-ubuntu-server" {
+source "vsphere-iso" "linux-ubuntu" {
 
 notes = "Built with Packer on ${local.build_date}"
 
@@ -57,7 +60,7 @@ notes = "Built with Packer on ${local.build_date}"
   boot_order = var.vm_boot_order
 
 #Boot Command - Pulled from Broadcom
-  boot_command = [
+    boot_command = [
     // This waits for 3 seconds, sends the "c" key, and then waits for another 3 seconds. In the GRUB boot loader, this is used to enter command line mode.
     "<wait3s>c<wait3s>",
     // This types a command to load the Linux kernel from the specified path with the 'autoinstall' option and the value of the 'data_source_command' local variable.
@@ -78,6 +81,8 @@ notes = "Built with Packer on ${local.build_date}"
 
 #SSH
   ip_wait_timeout = var.ip_wait_timeout
+  ip_settle_timeout = "5m"
+  pause_before_connecting = "30s"
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
   ssh_port = var.ssh_port
@@ -91,9 +96,9 @@ notes = "Built with Packer on ${local.build_date}"
 # BUILD
 build {
   sources = [
-    "source.vsphere-iso.linux-ubuntu-server"]
+    "source.vsphere-iso.linux-ubuntu"]
   provisioner "shell" {
-    scripts = ["./Ubuntu2204/script.sh"]
+    scripts = ["./Ubuntu2404/script.sh"]
     expect_disconnect = true
   }
  }

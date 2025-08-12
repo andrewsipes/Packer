@@ -5,6 +5,9 @@
 # AUTHOR:       Andrew Sipes
 #
 # CREATED:      8/7/2025
+# HISTORY:      
+#
+# 8/12/2025      - 1st Successful Deployment
 
 
 #Uncommment to install plugin
@@ -261,6 +264,12 @@ variable "ip_wait_timeout"{
   type        = string
   description = "timeout for waiting for ip"
   default     = "30m"
+}
+
+variable "ip_settle_timeout"{
+  type        = string
+  description = "timeout for waiting for ip"
+  default     = "5m"
 }
 
 variable "ssh_username"{

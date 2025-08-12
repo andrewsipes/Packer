@@ -3,7 +3,7 @@ autoinstall:
   version: 1
   early-commands:
     # Stop ssh for packer to stop it thinking the VM is ready
-    - sudo systemctl stop ssh
+    #- sudo systemctl stop ssh
   locale: en_US
   keyboard:
     layout: us
@@ -15,9 +15,9 @@ autoinstall:
     install-server: true
     allow-pw: true
   packages: 
-    - openssh-server
-    - open-vm-tools
-    - cloud-init
+  - openssh-server
+  - open-vm-tools
+  - cloud-init
   storage:
     layout:
       name: direct
@@ -32,6 +32,8 @@ autoinstall:
   late-commands:
     - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
     - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
+    - curtin in-target --target=/target -- sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
+    - curtin in-target --target=/target -- update-grub
     - curtin in-target --target=/target -- sudo ufw enable
     - curtin in-target --target=/target -- sudo ufw allow ssh
-    - sudo systemctl start ssh
+    #- sudo systemctl start ssh
