@@ -50,6 +50,7 @@ vm_boot_wait = "5s"
 additional_packages = []
 
 ip_wait_timeout = "20m"
+ip_settle_timeout = "5m"
 ssh_username = "ubuntu"
 ssh_password = "ubuntu"
 ssh_port = 22
