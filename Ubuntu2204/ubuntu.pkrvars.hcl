@@ -12,7 +12,6 @@
 # 8/14/2025     - Working Kernel Support for ASR
 
 #vSphere details
-#vSphere details
 vsphere_endpoint = ""
 vsphere_username = ""
 vsphere_password =  ""
