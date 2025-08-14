@@ -1,15 +1,3 @@
-
-#######################################
-# DESCRIPTION:  VMware Vars File
-# PURPOSE:      Initializes Values for VMware Images
-# AUTHOR:       Andrew Sipes
-#
-# CREATED:      8/7/2025
-# HISTORY:      
-#
-# 8/12/2025      - 1st Successful Deployment
-
-
 #Uncommment to install plugin
 packer {
   required_version = ">= 1.12.0"

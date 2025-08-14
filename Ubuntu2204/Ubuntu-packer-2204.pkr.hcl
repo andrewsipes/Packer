@@ -10,6 +10,7 @@
 # 8/4/2025      - Working ufw / ssh configurations
 # 8/7/2025      - Working Generalization Script
 # 8/14/2025     - Working Kernel Support for ASR
+# 8/14/2025     - Working hostname script added
 
 # LOCALS
 locals{
