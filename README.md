@@ -1,6 +1,8 @@
 # Packer Repo
 
-## Description: This Repository is for packer template files created for use with the ABRS Americas Team VMware Lab, but can be tailored to any Lab.
+## Description: 
+
+This Repository is for packer template files created for use with the ABRS Americas Team VMware Lab, but can be tailored to any Lab.
 
 ## Requirements:
 
