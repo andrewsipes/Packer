@@ -23,6 +23,19 @@ sudo reboot
 
 EOF
 
+# insert change hostname name script
+sudo tee /etc/profile.d/changeHostname.sh > /dev/null << 'EOF'
+
+echo "The Current Hostname is: $(hostname)"
+
+read -p "Please Enter a new hostname: " new_hostname
+
+echo "Hostname Updated to $new_hostname"
+
+sudo rm -f /etc/profile.d/changeHostname.sh
+
+EOF
+
 #update kernel to support for ASR
 echo y | sudo apt install linux-image-5.15.0-121-generic
 echo y | sudo apt install linux-headers-5.15.0-121-generic
@@ -34,6 +47,7 @@ sudo apt update
 
 # change execution parameters
 sudo chmod +x ~/generalize.sh
+sudo chmod +x /etc/profile.d/changeHostname.sh
 
 # require password on first boot
 sudo passwd -e ubuntu
