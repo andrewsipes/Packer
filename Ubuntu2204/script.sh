@@ -30,6 +30,8 @@ echo "The Current Hostname is: $(hostname)"
 
 read -p "Please Enter a new hostname: " new_hostname
 
+sudo hostnamectl set-hostname "$new_hostname"
+
 echo "Hostname Updated to $new_hostname"
 
 sudo rm -f /etc/profile.d/changeHostname.sh
