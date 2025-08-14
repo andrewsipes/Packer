@@ -9,6 +9,7 @@
 # 8/1/2025      - 1st Successful Deployment
 # 8/4/2025      - Working ufw / ssh configurations
 # 8/7/2025      - Working Generalization Script
+# 8/14/2025     - Working Kernel Support for ASR
 
 # LOCALS
 locals{
@@ -18,7 +19,7 @@ locals{
 # SOURCE
 source "vsphere-iso" "linux-ubuntu-server" {
 
-notes = "Built with Packer on ${local.build_date}"
+notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
 
 #vCenter
   vcenter_server = var.vsphere_endpoint
