@@ -8,7 +8,9 @@
 # HISTORY:      
 #
 # 8/1/2025      - 1st Successful Deployment
-#
+# 8/4/2025      - Working ufw / ssh configurations
+# 8/7/2025      - Working Generalization Script
+# 8/14/2025     - Working Kernel Support for ASR
 
 #Uncommment to install plugin
 packer {

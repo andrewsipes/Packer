@@ -1,22 +1,8 @@
 #!/bin/bash
 
-#update image
-sudo apt update
-
 #insert generalization script
 sudo tee ~/generalize.sh > /dev/null << 'EOF'
 #!/bin/bash
-
-# COUNTER="/home/ubuntu/counter.txt"
-# REBOOTS=0
-
-# Create counter file if not exists
-# if [ ! -e "$COUNTER" ]; then
-#     echo 0 > /home/ubuntu/counter.txt
-# fi
-
-# Set Count variable
-# count=$(cat "$COUNTER")
 
 # Generalize
 sudo rm -f /etc/machine-id
@@ -27,22 +13,24 @@ sudo ssh-keygen -A
 sudo systemctl restart sshd
 sudo echo "Generalized on $(date)" | sudo tee -a /var/log/generalize_log.txt > /dev/null
 
-# If count is less than target, increment and exit
-# if [ "$count" -lt "$REBOOTS" ]; then
-#     count=$((count + 1))
-#     echo "$count" > "$COUNTER"
-#     exit 0
-# fi
-
 # remove cron job
 sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
 
+# remove script
 sudo rm -f /home/ubuntu/generalize.sh
-sudo rm -f /home/ubuntu/counter.txt
 
 sudo reboot
 
 EOF
+
+#update kernel to support for ASR
+echo y | sudo apt install linux-image-5.15.0-121-generic
+echo y | sudo apt install linux-headers-5.15.0-121-generic
+sudo sed -i '/GRUB_DEFAULT=0/c\GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-121-generic"' /etc/default/grub
+sudo bash -c 'update-grub'
+
+#update image
+sudo apt update
 
 # change execution parameters
 sudo chmod +x ~/generalize.sh
