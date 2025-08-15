@@ -1,13 +1,3 @@
-#######################################
-# DESCRIPTION:  Ubuntu pkrvars File
-# PURPOSE:      Provides values to required attributes to deploy packer image
-# AUTHOR:       Andrew Sipes
-#
-# CREATED:      8/7/2025
-# HISTORY:      
-#
-# 8/12/2025      - 1st Successful Deployment
-
 #vSphere details
 vsphere_endpoint = ""
 vsphere_username = ""
@@ -24,7 +14,7 @@ vsphere_set_host_for_datastore_uploads = false
 convert_to_conversion = false
 vm_guest_os_family = "linux"
 vm_guest_os_type ="ubuntu64Guest"
-vm_guest_os_name = "Ubuntu2404-Template"
+vm_guest_os_name = "Ubuntu-2404-Template"
 vm_firmware = "efi"
 vm_cdrom_type = "sata"
 vm_cdrom_count = 1

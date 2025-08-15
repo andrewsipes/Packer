@@ -7,6 +7,8 @@
 # HISTORY:      
 #
 # 8/12/2025      - 1st Successful Deployment
+# 8/14/2025      - Added improvements from 2204 template
+#                  Including: Hostname script and ASR support
 
 # LOCALS
 locals{
@@ -16,7 +18,7 @@ locals{
 # SOURCE
 source "vsphere-iso" "linux-ubuntu" {
 
-notes = "Built with Packer on ${local.build_date}"
+notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
 
 #vCenter
   vcenter_server = var.vsphere_endpoint

@@ -37,9 +37,9 @@ sudo rm -f /etc/profile.d/changeHostname.sh
 EOF
 
 #update kernel to support for ASR
-echo y | sudo apt install linux-image-5.15.0-121-generic
-echo y | sudo apt install linux-headers-5.15.0-121-generic
-sudo sed -i '/GRUB_DEFAULT=0/c\GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-121-generic"' /etc/default/grub
+echo y | sudo apt install linux-image-6.8.0-64-generic
+echo y | sudo apt install linux-headers-6.8.0-64-generic
+sudo sed -i '/GRUB_DEFAULT=0/c\GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 6.8.0-64-generic"' /etc/default/grub
 sudo bash -c 'update-grub'
 
 #update image
