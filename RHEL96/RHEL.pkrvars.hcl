@@ -13,14 +13,13 @@ vsphere_set_host_for_datastore_uploads = false
 #VM Details
 convert_to_conversion = false
 vm_guest_os_family = "linux"
-vm_guest_os_type ="rhel9_64guest"
+vm_guest_os_type ="otherlinux64guest"
 vm_guest_os_name = "RHEL96-Template"
 vm_firmware = "efi"
 vm_cdrom_type = "sata"
 vm_cdrom_count = 1
 vm_cd_label = "cidata"
-vm_userdata = "./RHEL96/user-data" # default file for user data like setting password
-vm_metadata = "./RHEL96/meta-data" # default file for meta data - intentionally left blank
+vm_userdata = "./RHEL96/ks.cfg" # default file for user data like setting password
 
 #Compute
 vm_cpu_count = 2

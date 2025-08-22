@@ -14,10 +14,10 @@ sudo systemctl restart sshd
 sudo echo "Generalized on $(date)" | sudo tee -a /var/log/generalize_log.txt > /dev/null
 
 # remove cron job
-sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
+sudo sed -i '\@reboot root /home/redhat/generalize.sh@d' /etc/crontab
 
 # remove script
-sudo rm -f /home/ubuntu/generalize.sh
+sudo rm -f /home/redhat/generalize.sh
 
 sudo reboot
 
@@ -39,10 +39,10 @@ sudo rm -f /etc/profile.d/changeHostname.sh
 EOF
 
 #update kernel to support for ASR
-echo y | sudo apt install linux-image-5.15.0-121-generic
-echo y | sudo apt install linux-headers-5.15.0-121-generic
-sudo sed -i '/GRUB_DEFAULT=0/c\GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-121-generic"' /etc/default/grub
-sudo bash -c 'update-grub'
+#echo y | sudo apt install linux-image-5.15.0-121-generic
+#echo y | sudo apt install linux-headers-5.15.0-121-generic
+#sudo sed -i '/GRUB_DEFAULT=0/c\GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-121-generic"' /etc/default/grub
+#sudo bash -c 'update-grub'
 
 #update image
 sudo apt update
