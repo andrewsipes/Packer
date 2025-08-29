@@ -54,10 +54,11 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: redhat\nDef
 
 #CD / ISO
   iso_paths = [var.iso_file]
-  cd_files  = [var.vm_userdata]
-  cd_label = var.vm_cd_label
+  //cd_files  = [var.vm_userdata]
+  //cd_label = var.vm_cd_label
   remove_cdrom = var.common_remove_cdrom
   boot_order = var.vm_boot_order
+  http_directory = "./RHEL96/http"
 
 #Boot Command - Pulled from Broadcom
 
@@ -71,8 +72,7 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: redhat\nDef
     // This types the string "text" followed by the value of the 'data_source_command' local variable.
     // This is used to modify the boot menu option's configuration to boot in text mode and specify the kickstart data source configured in the common variables.
     //"text inst.ks=cdrom:/ks.cfg",
-  
-    "linux inst.text init.ks=cdrom:/ks.cfg",
+    "linux inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
     // This sends the "enter" key, waits, turns on the left control key, sends the "x" key, and then turns off the left control key. This is used to save the changes and exit the boot menu option's configuration, and then continue the boot process.
     "<enter><wait><leftCtrlOn>x<leftCtrlOff>"
   ]

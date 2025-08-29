@@ -1,13 +1,13 @@
 #vSphere details
-vsphere_endpoint = ""
-vsphere_username = ""
-vsphere_password =  ""
+vsphere_endpoint = "abrsamervcenter.corp.microsoft.com"
+vsphere_username = "asipes@vsphere.local"
+vsphere_password =  "Notadefaultpass!7"
 vsphere_insecure_connection = true
-vsphere_datacenter = ""
-vsphere_host = ""
-vsphere_datastore = ""
-vsphere_network = ""
-vsphere_folder = ""
+vsphere_datacenter = "ABRS Amer Datacenter"
+vsphere_host = "10.197.209.132"
+vsphere_datastore = "Datastore 1"
+vsphere_network = "VM_Switch_Network"
+vsphere_folder = "asipes"
 vsphere_set_host_for_datastore_uploads = false
 
 #VM Details
@@ -18,8 +18,8 @@ vm_guest_os_name = "RHEL96-Template"
 vm_firmware = "efi"
 vm_cdrom_type = "sata"
 vm_cdrom_count = 1
-vm_cd_label = "cidata"
-vm_userdata = "./RHEL96/ks.cfg" # default file for user data like setting password
+//vm_cd_label = "cidata"
+//vm_userdata = "./RHEL96/ks.cfg" # default file for user data like setting password
 
 #Compute
 vm_cpu_count = 2
