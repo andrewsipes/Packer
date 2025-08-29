@@ -18,8 +18,7 @@ vm_guest_os_name = "RHEL96-Template"
 vm_firmware = "efi"
 vm_cdrom_type = "sata"
 vm_cdrom_count = 1
-//vm_cd_label = "cidata"
-//vm_userdata = "./RHEL96/ks.cfg" # default file for user data like setting password
+vm_http_directory = "./RHEL96/http"
 
 #Compute
 vm_cpu_count = 2
