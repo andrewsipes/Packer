@@ -58,7 +58,7 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: redhat\nDef
   iso_paths = [var.iso_file]
   remove_cdrom = var.common_remove_cdrom
   boot_order = var.vm_boot_order
-  http_directory = var.vm.http_directory
+  http_directory = var.vm_http_directory
 
 #Boot Command - Pulled from Broadcom
 
