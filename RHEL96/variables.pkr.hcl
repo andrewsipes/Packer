@@ -283,3 +283,9 @@ variable "shutdown_timeout"{
   description = "shutdown timeout"
   default     = "15m"
 }
+
+variable "vm_http_directory"{
+  type        = string
+  description = "default http server location"
+  default     = "./RHEL/http"
+}

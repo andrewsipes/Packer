@@ -52,7 +52,7 @@ sudo chmod +x ~/generalize.sh
 sudo chmod +x /etc/profile.d/changeHostname.sh
 
 # require password on first boot
-sudo passwd -e ubuntu
+sudo passwd -e redhat
 
 # create cron job
-sudo bash -c 'echo "@reboot root /home/ubuntu/generalize.sh" >> /etc/crontab'
+sudo bash -c 'echo "@reboot root /home/redhat/generalize.sh" >> /etc/crontab'

@@ -4,7 +4,9 @@
 # AUTHOR:       Andrew Sipes
 #
 # CREATED:      8/20/2025
-# HISTORY:      
+# HISTORY:    
+#  
+# 8/29/2025     -Install completes
 #
 
 
@@ -54,11 +56,9 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: redhat\nDef
 
 #CD / ISO
   iso_paths = [var.iso_file]
-  //cd_files  = [var.vm_userdata]
-  //cd_label = var.vm_cd_label
   remove_cdrom = var.common_remove_cdrom
   boot_order = var.vm_boot_order
-  http_directory = "./RHEL96/http"
+  http_directory = var.vm_http_directory
 
 #Boot Command - Pulled from Broadcom
 
