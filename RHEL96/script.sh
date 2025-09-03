@@ -1,5 +1,21 @@
 #!/bin/bash
 
+#insert change hostname name script
+sudo tee ~/changeHostname.sh > /dev/null << 'EOF'
+
+echo "The Current Hostname is: $(hostname)"
+
+read -p "Please Enter a new hostname: " new_hostname
+
+sudo hostnamectl set-hostname "$new_hostname"
+
+echo "Hostname Updated to $new_hostname"
+
+sudo rm -f /etc/profile.d/changeHostname.sh
+sudo rm -f ~/changeHostname.sh
+
+EOF
+
 #insert generalization script
 sudo tee ~/generalize.sh > /dev/null << 'EOF'
 #!/bin/bash
@@ -19,22 +35,11 @@ sudo sed -i '\@reboot root /home/redhat/generalize.sh@d' /etc/crontab
 # remove script
 sudo rm -f /home/redhat/generalize.sh
 
+#copy hostname script to the profile.d directory
+sudo bash -c "cp /home/redhat/changeHostname.sh /etc/profile.d/changeHostname.sh"
+sudo bash -c "chmod +x /etc/profile.d/changeHostname.sh"
+
 sudo reboot
-
-EOF
-
-# insert change hostname name script
-sudo tee /etc/profile.d/changeHostname.sh > /dev/null << 'EOF'
-
-echo "The Current Hostname is: $(hostname)"
-
-read -p "Please Enter a new hostname: " new_hostname
-
-sudo hostnamectl set-hostname "$new_hostname"
-
-echo "Hostname Updated to $new_hostname"
-
-sudo rm -f /etc/profile.d/changeHostname.sh
 
 EOF
 
@@ -49,7 +54,6 @@ sudo apt update
 
 # change execution parameters
 sudo chmod +x ~/generalize.sh
-sudo chmod +x /etc/profile.d/changeHostname.sh
 
 # require password on first boot
 sudo passwd -e redhat

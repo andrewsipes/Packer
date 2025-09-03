@@ -1,4 +1,3 @@
-
 #vSphere details
 vsphere_endpoint = ""
 vsphere_username = ""
