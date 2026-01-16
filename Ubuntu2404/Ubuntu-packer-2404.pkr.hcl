@@ -100,7 +100,7 @@ build {
   sources = [
     "source.vsphere-iso.linux-ubuntu"]
   provisioner "shell" {
-    scripts = ["./Ubuntu2404/script.sh"]
+    scripts = ["./script.sh"]
     expect_disconnect = true
   }
  }

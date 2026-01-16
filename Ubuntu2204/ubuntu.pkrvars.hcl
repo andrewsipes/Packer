@@ -14,13 +14,13 @@ vsphere_set_host_for_datastore_uploads = false
 convert_to_conversion = false
 vm_guest_os_family = "linux"
 vm_guest_os_type ="ubuntu64Guest"
-vm_guest_os_name = "Ubuntu2204-Template"
+vm_guest_os_name = "Ubuntu-2204-Template"
 vm_firmware = "efi"
 vm_cdrom_type = "sata"
 vm_cdrom_count = 1
 vm_cd_label = "cidata"
-vm_userdata = "./Ubuntu2204/user-data" # default file for user data like setting password
-vm_metadata = "./Ubuntu2204/meta-data" # default file for meta data - intentionally left blank
+vm_userdata = "./user-data" # default file for user data like setting password
+vm_metadata = "./meta-data" # default file for meta data - intentionally left blank
 
 #Compute
 vm_cpu_count = 2

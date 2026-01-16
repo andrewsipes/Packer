@@ -19,8 +19,8 @@ vm_firmware = "efi"
 vm_cdrom_type = "sata"
 vm_cdrom_count = 1
 vm_cd_label = "cidata"
-vm_userdata = "./Ubuntu2404/user-data" # default file for user data like setting password
-vm_metadata = "./Ubuntu2404/meta-data" # default file for meta data - intentionally left blank
+vm_userdata = "./user-data" # default file for user data like setting password
+vm_metadata = "./meta-data" # default file for meta data - intentionally left blank
 
 #Compute
 vm_cpu_count = 2
