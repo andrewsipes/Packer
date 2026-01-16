@@ -26,7 +26,7 @@ EOF
 # insert change hostname name script
 sudo tee /etc/profile.d/changeHostname.sh > /dev/null << 'EOF'
 
-if [ $(hostname) -eq "ubuntu-server" ]; then
+if [ $(hostname) == "ubuntu-server" ]; then
 
     echo "The Current Hostname is: $(hostname)"
     read -p "Please Enter a new hostname: " new_hostname
