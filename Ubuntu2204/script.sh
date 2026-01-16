@@ -19,7 +19,7 @@ sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
 # remove script
 sudo rm -f /home/ubuntu/generalize.sh
 
-#sudo reboot
+sudo reboot
 
 EOF
 
