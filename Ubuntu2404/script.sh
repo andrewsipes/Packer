@@ -19,23 +19,22 @@ sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
 # remove script
 sudo rm -f /home/ubuntu/generalize.sh
 
-sudo reboot
+#sudo reboot
 
 EOF
 
 # insert change hostname name script
 sudo tee /etc/profile.d/changeHostname.sh > /dev/null << 'EOF'
 
-echo "The Current Hostname is: $(hostname)"
+if [$(hostname) -eq "ubuntu-server]; then
 
-read -p "Please Enter a new hostname: " new_hostname
+    echo "The Current Hostname is: $(hostname)"
+    read -p "Please Enter a new hostname: " new_hostname
+    sudo hostnamectl set-hostname "$new_hostname"
+    echo "Hostname Updated to $new_hostname"
+    sudo rm -f /etc/profile.d/changeHostname.sh
 
-sudo hostnamectl set-hostname "$new_hostname"
-
-echo "Hostname Updated to $new_hostname"
-
-sudo rm -f /etc/profile.d/changeHostname.sh
-
+fi
 EOF
 
 #update kernel to support for ASR
