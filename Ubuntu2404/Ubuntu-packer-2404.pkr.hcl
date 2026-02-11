@@ -9,6 +9,7 @@
 # 8/12/2025      - 1st Successful Deployment
 # 8/14/2025      - Added improvements from 2204 template
 #                  Including: Hostname script and ASR support
+# 2/11/26        - Updates to Source/Build config due to issues deploying this in a personal lab.
 
 # LOCALS
 locals{
@@ -16,7 +17,7 @@ locals{
 }
 
 # SOURCE
-source "vsphere-iso" "linux-ubuntu" {
+source "vsphere-iso" "linux-ubuntu-server" {
 
 notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
 
@@ -62,7 +63,7 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDef
   boot_order = var.vm_boot_order
 
 #Boot Command - Pulled from Broadcom
-    boot_command = [
+  boot_command = [
     // This waits for 3 seconds, sends the "c" key, and then waits for another 3 seconds. In the GRUB boot loader, this is used to enter command line mode.
     "<wait3s>c<wait3s>",
     // This types a command to load the Linux kernel from the specified path with the 'autoinstall' option and the value of the 'data_source_command' local variable.
@@ -84,7 +85,6 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDef
 #SSH
   ip_wait_timeout = var.ip_wait_timeout
   ip_settle_timeout = var.ip_settle_timeout
-  pause_before_connecting = "30s"
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
   ssh_port = var.ssh_port
@@ -98,7 +98,7 @@ notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDef
 # BUILD
 build {
   sources = [
-    "source.vsphere-iso.linux-ubuntu"]
+    "source.vsphere-iso.linux-ubuntu-server"]
   provisioner "shell" {
     scripts = ["./script.sh"]
     expect_disconnect = true
