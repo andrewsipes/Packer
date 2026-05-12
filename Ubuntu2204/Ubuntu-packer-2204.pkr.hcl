@@ -11,6 +11,7 @@
 # 8/7/2025      - Working Generalization Script
 # 8/14/2025     - Working Kernel Support for ASR
 # 8/14/2025     - Working hostname script added
+# 5/12/2026     - Added Support for root user
 
 # LOCALS
 locals{
@@ -20,7 +21,7 @@ locals{
 # SOURCE
 source "vsphere-iso" "linux-ubuntu-server" {
 
-notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
+notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu | root \nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
 
 #vCenter
   vcenter_server = var.vsphere_endpoint

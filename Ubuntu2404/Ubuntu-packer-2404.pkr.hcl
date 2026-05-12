@@ -18,7 +18,7 @@ locals{
 # SOURCE
 source "vsphere-iso" "linux-ubuntu" {
 
-notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu\nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
+notes = "Built with Packer on ${local.build_date}\nDefault Username: ubuntu | root \nDefault Password: ubuntu\nInstructions: Login and Update Hostname and password!"
 
 #vCenter
   vcenter_server = var.vsphere_endpoint

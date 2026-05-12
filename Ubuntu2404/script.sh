@@ -4,6 +4,10 @@
 sudo tee ~/generalize.sh > /dev/null << 'EOF'
 #!/bin/bash
 
+# Update Root Access
+sudo bash -c 'echo "root:ubuntu" | sudo chpasswd'
+sudo bash -c "echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config"
+
 # Generalize
 sudo rm -f /etc/machine-id
 sudo systemd-machine-id-setup
@@ -12,6 +16,10 @@ sudo rm /etc/ssh/ssh_host_*
 sudo ssh-keygen -A
 sudo systemctl restart sshd
 sudo echo "Generalized on $(date)" | sudo tee -a /var/log/generalize_log.txt > /dev/null
+
+# require password on first boot
+sudo passwd -e ubuntu
+sudo passwd -e root
 
 # remove cron job
 sudo sed -i '\@reboot root /home/ubuntu/generalize.sh@d' /etc/crontab
@@ -49,9 +57,6 @@ sudo apt update
 # change execution parameters
 sudo chmod +x ~/generalize.sh
 sudo chmod +x /etc/profile.d/changeHostname.sh
-
-# require password on first boot
-sudo passwd -e ubuntu
 
 # create cron job
 sudo bash -c 'echo "@reboot root /home/ubuntu/generalize.sh" >> /etc/crontab'

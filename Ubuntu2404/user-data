@@ -33,8 +33,6 @@ autoinstall:
   late-commands:
     - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
     - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
-    - curtin in-target --target=/target -- sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
-    - curtin in-target --target=/target -- update-grub
     - curtin in-target --target=/target -- sudo ufw enable
     - curtin in-target --target=/target -- sudo ufw allow ssh
     - sudo systemctl start ssh
