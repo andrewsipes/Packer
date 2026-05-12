@@ -10,15 +10,16 @@ autoinstall:
   identity:
     hostname: ubuntu-server
     username: ubuntu
-    password: "$1$vFQ7ioGq$hpFhe06ZRYkbJF950dyb21"
+    password: "$6$rounds=4096$iuRGhR9.Lgi2M86I$5oVZeRgsAq2yo2C2.CNzjnwv5Wv06qYwWcQElJjxyCBNSNWQ9y.tX2xbmg9GkeHcdfUw0X9unt3GVfgAkPbTV0"
   ssh:
+    ssh_pwauth: true
     install-server: true
     allow-pw: true
   packages: 
-  - openssh-server
-  - open-vm-tools
-  - cloud-init
-  - isc-dhcp-client
+    - openssh-server
+    - open-vm-tools
+    - cloud-init
+    #- isc-dhcp-client
   storage:
     layout:
       name: direct
