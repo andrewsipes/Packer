@@ -10,6 +10,7 @@
 # 8/14/2025      - Added improvements from 2204 template
 #                  Including: Hostname script and ASR support
 # 2/11/26        - Updates to Source/Build config due to issues deploying this in a personal lab.
+# 5/12/26        - Added support for root user
 
 # LOCALS
 locals{
